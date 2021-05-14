@@ -1,0 +1,51 @@
+{# Template: covers #}
+{# option.episodes       --- define how many episodes are shown #}
+
+<ul class="podlove-episodes">
+  {% for episode in podcast.episodes %}
+    {% if loop.index <= option.episodes %}
+        <li>
+          <a class="podlove-episodes__episode" href="{{ episode.url }}">
+            <img class="podlove-episodes__thumb" src="{{ episode.image({fallback: true}).url({width: 400}) }}" alt="{{ episode.title }}">
+          </a>
+        </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<style>
+  .content-area .podlove-episodes {
+      list-style: none;
+      padding: 0;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      max-width: 70rem !important; /* Sorry but Wordpress */
+    
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  
+  .content-area .podlove-episodes li {
+      padding: 0;
+      margin: 0;
+  }
+
+  .podlove-episodes__thumb {
+    width: 100%;
+    max-width: 200px;
+
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: scale(1) translateY(0);
+    transition: transform .2s ease-in-out;
+  }
+
+  .podlove-episodes__thumb:hover {
+    transform: scale(1.05) translateY(-10px);
+  }
+
+  .podlove-episodes__episode {
+    display: block;
+    margin: 1rem;
+  }
+</style>
