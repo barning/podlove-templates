@@ -1,8 +1,8 @@
-{# Template: covers #}
-{# option.episodes       --- define how many episodes are shown #}
+{# option.episodes   --- define how many episodes are shown #}
+{# option.order      --- define if episodes are shown ascending or descending #}
 
 <ul class="podlove-episodes">
-  {% for episode in podcast.episodes %}
+  {% for episode in podcast.episodes({orderby: 'publicationDate', 'order': option.order})  %}
     {% if loop.index <= option.episodes %}
         <li>
           <a class="podlove-episodes__episode" href="{{ episode.url }}">
