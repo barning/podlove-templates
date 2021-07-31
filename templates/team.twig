@@ -1,27 +1,25 @@
-{# option.groupName --- define which group will be shown #}
-
 <div class="podlove__podcast-team">
-  {% for contributor in podcast.contributors({group: option.groupName}) %}
-    {% if contributor.visible %}
-      <div class="podlove__contributor">
-        {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 200} only %}
-        <span class="podlove__contributor-name">{{ contributor.name }}</span>
-      </div>
-    {% endif %}
-  {% endfor %}
+{% for contributor in podcast.contributors({role: "team"}) %}
+	{% if contributor.visible %}
+	<div class="podlove__contributor">
+	{% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 200} only %}
+	<span class="podlove__contributor-name">{{ contributor.name }}</span>
+	</div>
+	{% endif %}
+{% endfor %}
 </div>
 
 <style>
   .content-area .podlove__podcast-team,
   .podlove__podcast-team {
-    padding: 0;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    max-width: 70rem !important; /* Sorry but Wordpress */
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+      padding: 0;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      max-width: 70rem !important; /* Sorry but Wordpress */
+    
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
   }
 
   .podlove__contributor {
@@ -29,10 +27,11 @@
     flex-direction: column;
     align-items: center;
     margin: 1rem;
+    max-width: 100px;
   }
 
   .podlove__contributor img {
-    max-width: 150px;
+    width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 1rem;
